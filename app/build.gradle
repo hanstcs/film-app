@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -29,6 +31,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -37,6 +42,10 @@ dependencies {
     implementation supportDeps.appCompat
     implementation supportDeps.material
     implementation supportDeps.constraintLayout
+    implementation libraries.volley
+    implementation libraries.gson
+    implementation libraries.hilt
+    implementation libraries.hiltCompiler
 
     testImplementation testLibraries.junit5Api
     testImplementation testLibraries.junit5Engine

@@ -11,6 +11,8 @@ ext {
     archCoreTestingVersion = '2.1.0'
     roomVersion = '2.3.0'
     volleyVersion = '1.2.1'
+    gsonVersion = '2.8.5'
+    hiltVersion = '2.35'
 
     supportDeps = [
             appCompat       : "androidx.appcompat:appcompat:${appCompatVersion}",
@@ -26,7 +28,10 @@ ext {
             room          : "androidx.room:room-runtime:${roomVersion}",
             roomCompiler  : "androidx.room:room-compiler:${roomVersion}",
             roomCoroutines: "androidx.room:room-ktx:${roomVersion}",
-            volley        : "com.android.volley:volley:${volleyVersion}"
+            volley        : "com.android.volley:volley:${volleyVersion}",
+            gson          : "com.google.code.gson:gson:${gsonVersion}",
+            hilt          : "com.google.dagger:hilt-android:${hiltVersion}",
+            hiltCompiler  : "com.google.dagger:hilt-android-compiler:${hiltVersion}"
     ]
 
     testLibraries = [
