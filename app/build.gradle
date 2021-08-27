@@ -34,6 +34,10 @@ android {
     buildFeatures {
         viewBinding true
     }
+    kapt {
+        correctErrorTypes true
+    }
+
 }
 
 dependencies {
@@ -45,7 +49,9 @@ dependencies {
     implementation libraries.volley
     implementation libraries.gson
     implementation libraries.hilt
-    implementation libraries.hiltCompiler
+    kapt(libraries.hiltCompiler)
+    implementation libraries.viewModelKtx
+    implementation libraries.fragmentKtx
 
     testImplementation testLibraries.junit5Api
     testImplementation testLibraries.junit5Engine
