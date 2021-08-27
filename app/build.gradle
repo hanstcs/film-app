@@ -1,0 +1,50 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdk 30
+
+    defaultConfig {
+        applicationId "com.example.filmapp"
+        minSdk 21
+        targetSdk 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation libraries.coreKtx
+    implementation supportDeps.appCompat
+    implementation supportDeps.material
+    implementation supportDeps.constraintLayout
+
+    testImplementation testLibraries.junit5Api
+    testImplementation testLibraries.junit5Engine
+    testImplementation testLibraries.junitRunner
+    testImplementation testLibraries.mockitoKotlin2
+    testImplementation testLibraries.mockitoInline
+    testImplementation testLibraries.mockitoCore
+    testImplementation testLibraries.coreTesting
+    androidTestImplementation testLibraries.jUnitExt
+    androidTestImplementation testLibraries.esspresso
+}

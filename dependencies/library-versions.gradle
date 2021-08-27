@@ -1,0 +1,44 @@
+ext {
+    appCompatVersion = '1.3.1'
+    materialVersion = '1.4.0'
+    constraintLayoutVersion = '2.1.0'
+
+    coreKtxVersion = '1.6.0'
+    viewModelKtxVersion = '2.3.1'
+    mockitoCore = '3.10.0'
+    junit5Version = '5.4.0'
+    glideVersion = '4.12.0'
+    archCoreTestingVersion = '2.1.0'
+    roomVersion = '2.3.0'
+    volleyVersion = '1.2.1'
+
+    supportDeps = [
+            appCompat       : "androidx.appcompat:appcompat:${appCompatVersion}",
+            material        : "com.google.android.material:material:${materialVersion}",
+            constraintLayout: "androidx.constraintlayout:constraintlayout:${constraintLayoutVersion}"
+    ]
+
+    libraries = [
+            coreKtx       : "androidx.core:core-ktx:${coreKtxVersion}",
+            viewModelKtx  : "androidx.lifecycle:lifecycle-viewmodel-ktx:${viewModelKtxVersion}",
+            fragmentKtx   : "androidx.fragment:fragment-ktx:1.3.4",
+            glide         : "com.github.bumptech.glide:glide:${glideVersion}",
+            room          : "androidx.room:room-runtime:${roomVersion}",
+            roomCompiler  : "androidx.room:room-compiler:${roomVersion}",
+            roomCoroutines: "androidx.room:room-ktx:${roomVersion}",
+            volley        : "com.android.volley:volley:${volleyVersion}"
+    ]
+
+    testLibraries = [
+            junit5Engine       : "org.junit.jupiter:junit-jupiter-engine:$junit5Version",
+            junit5VintageEngine: "org.junit.vintage:junit-vintage-engine:$junit5Version",
+            junit5Api          : "org.junit.jupiter:junit-jupiter-api:$junit5Version",
+            junitRunner        : 'org.junit.platform:junit-platform-runner:1.4.0',
+            mockitoKotlin2     : "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0",
+            mockitoInline      : "org.mockito:mockito-inline:2.25.0",
+            mockitoCore        : "org.mockito:mockito-core:${mockitoCore}",
+            coreTesting        : "androidx.arch.core:core-testing:${archCoreTestingVersion}",
+            jUnitExt           : 'androidx.test.ext:junit:1.1.3',
+            esspresso          : 'androidx.test.espresso:espresso-core:3.4.0'
+    ]
+}
