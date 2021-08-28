@@ -57,6 +57,7 @@ dependencies {
     kapt libraries.roomCompiler
     implementation libraries.rx2Java
     implementation libraries.rx2Android
+    implementation libraries.glide
 
     testImplementation testLibraries.junit5Api
     testImplementation testLibraries.junit5Engine

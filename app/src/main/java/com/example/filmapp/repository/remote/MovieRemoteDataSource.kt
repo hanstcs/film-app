@@ -1,9 +1,7 @@
 package com.example.filmapp.repository.remote
 
 import com.android.volley.RequestQueue
-import com.android.volley.VolleyError
 import com.example.filmapp.GsonRequest
-import com.example.filmapp.MovieListResponse
 import io.reactivex.Single
 import io.reactivex.SingleOnSubscribe
 import javax.inject.Inject

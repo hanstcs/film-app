@@ -1,4 +1,4 @@
-package com.example.filmapp
+package com.example.filmapp.repository.remote
 
 import com.google.gson.annotations.SerializedName
 
@@ -12,6 +12,8 @@ data class MovieListResponse(
 )
 
 data class Movie(
+    @SerializedName("id")
+    val id: Int,
     @SerializedName("original_title")
     val originalTitle: String,
     @SerializedName("title")

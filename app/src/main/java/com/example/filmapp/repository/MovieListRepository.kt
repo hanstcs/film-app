@@ -29,6 +29,7 @@ class MovieListRepositoryImpl @Inject constructor(
             .flatMap { fromLocal }
 
         return Single.concat(fromLocal, getFromRemote)
+            .distinct()
             .observeOn(AndroidSchedulers.mainThread())
     }
 

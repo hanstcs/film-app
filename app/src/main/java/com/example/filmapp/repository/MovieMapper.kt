@@ -1,6 +1,6 @@
 package com.example.filmapp.repository
 
-import com.example.filmapp.Movie
+import com.example.filmapp.repository.remote.Movie
 import com.example.filmapp.repository.local.MovieModel as MovieModelDB
 
 class MovieMapper {
@@ -10,7 +10,7 @@ class MovieMapper {
 
         private fun toMovieDB(movie: Movie): MovieModelDB {
             return MovieModelDB(
-                null,
+                movie.id,
                 movie.title,
                 movie.posterPath,
                 movie.overview,
@@ -23,7 +23,7 @@ class MovieMapper {
 
         private fun toMovieRepo(movie: MovieModelDB): MovieModel =
             MovieModel(
-                movie.id!!,
+                movie.id,
                 movie.title,
                 movie.posterPath,
                 movie.overview,
