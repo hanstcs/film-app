@@ -2,27 +2,27 @@ package com.example.filmapp
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.android.volley.VolleyError
-import com.example.filmapp.repository.MovieRemoteDataSource
-import com.example.filmapp.repository.NetworkCallback
+import com.example.filmapp.repository.MovieListRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
 @HiltViewModel
 class MovieListViewModel @Inject constructor(
-    private val dataSource: MovieRemoteDataSource
+    private val movieListRepo: MovieListRepository
 ) : ViewModel() {
+    private val addDisposable by lazy { CompositeDisposable() }
 
     fun loadMovies() {
-        dataSource.getList(1,
-            object : NetworkCallback<MovieListResponse> {
-                override fun onSuccess(response: MovieListResponse) {
-                    Log.d("Movie", response.toString())
-                }
+        movieListRepo.getMovieListSingle()
+            .subscribe(
+                { response -> Log.d("Movie", response.toString()) },
+                { throwable -> Log.e("Movie is failed ", throwable.message ?: "Error", throwable) }
+            ).let(addDisposable::add)
+    }
 
-                override fun onError(error: VolleyError) {
-                    Log.e("Movie", error.message ?: "Error")
-                }
-            })
+    override fun onCleared() {
+        super.onCleared()
+        addDisposable.clear()
     }
 }

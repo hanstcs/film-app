@@ -52,6 +52,11 @@ dependencies {
     kapt(libraries.hiltCompiler)
     implementation libraries.viewModelKtx
     implementation libraries.fragmentKtx
+    implementation libraries.room
+    implementation libraries.roomRxJava
+    kapt libraries.roomCompiler
+    implementation libraries.rx2Java
+    implementation libraries.rx2Android
 
     testImplementation testLibraries.junit5Api
     testImplementation testLibraries.junit5Engine
