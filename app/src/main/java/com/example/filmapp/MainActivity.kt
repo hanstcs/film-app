@@ -1,14 +1,14 @@
 package com.example.filmapp
 
 import android.os.Bundle
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.filmapp.base.BaseAdapter
 import com.example.filmapp.databinding.ActivityMainBinding
+import com.example.filmapp.extension.gone
+import com.example.filmapp.extension.visible
 import com.example.filmapp.repository.MovieModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -56,12 +56,16 @@ class MainActivity : AppCompatActivity() {
             { viewState ->
                 when (viewState) {
                     is MovieListViewState.ShowLoading -> {
-
+                        binding.loadingView.visible()
+                        binding.failedView.hide()
                     }
                     is MovieListViewState.Failed -> {
-
+                        binding.loadingView.gone()
+                        binding.failedView.show()
                     }
                     is MovieListViewState.ShowMovies -> {
+                        binding.loadingView.gone()
+                        binding.failedView.hide()
                         moviesAdapter.addClearItems(viewState.movies)
                     }
                 }
