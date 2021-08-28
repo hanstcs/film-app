@@ -7,26 +7,33 @@ import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import io.reactivex.Flowable
-import org.junit.jupiter.api.AfterEach
-import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Test
+import org.junit.After
+import org.junit.Before
+import org.junit.Rule
+import org.junit.Test
+import org.junit.rules.TestRule
 import org.mockito.MockitoAnnotations
 
-internal class MovieListViewModelTest {
+class MovieListViewModelTest {
+    @Rule
+    @JvmField
+    var rule: TestRule = InstantTaskExecutorRule()
+
     private lateinit var viewModel: MovieListViewModel
     private val stateObserver = mock<Observer<MovieListViewState>>()
     private val repo: MovieListRepository = mock()
 
-    @BeforeEach
-    internal fun setUp() {
+    @Before
+    fun setUp() {
         MockitoAnnotations.openMocks(this)
         viewModel = MovieListViewModel(repo)
+
+        RxSchedulers.start()
         viewModel.state.observeForever(stateObserver)
-        InstantTaskExecutorRule()
     }
 
     @Test
-    internal fun `when fetch movie data success should set correct state`() {
+    fun `when fetch movie data success should set correct state`() {
         whenever(repo.getMovieListSingle())
             .thenReturn(Flowable.just(emptyList()))
         viewModel.loadMovies()
@@ -36,7 +43,7 @@ internal class MovieListViewModelTest {
     }
 
     @Test
-    internal fun `when fetch movie data failed should set correct state`() {
+    fun `when fetch movie data failed should set correct state`() {
         whenever(repo.getMovieListSingle())
             .thenReturn(Flowable.error(Throwable()))
         viewModel.loadMovies()
@@ -45,8 +52,9 @@ internal class MovieListViewModelTest {
         verify(stateObserver).onChanged(MovieListViewState.Failed)
     }
 
-    @AfterEach
-    internal fun tearDown() {
+    @After
+    fun tearDown() {
+        RxSchedulers.tearDown()
         viewModel.state.removeObserver(stateObserver)
     }
 }

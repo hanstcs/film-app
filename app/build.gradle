@@ -60,13 +60,13 @@ dependencies {
     implementation libraries.glide
     implementation libraries.lottie
 
-    testImplementation testLibraries.junit5Api
-    testImplementation testLibraries.junit5Engine
+    testImplementation testLibraries.coreTesting
+    testImplementation testLibraries.junit
     testImplementation testLibraries.junitRunner
+    testImplementation testLibraries.mockitoCore
     testImplementation testLibraries.mockitoKotlin2
     testImplementation testLibraries.mockitoInline
-    testImplementation testLibraries.mockitoCore
-    testImplementation testLibraries.coreTesting
-    androidTestImplementation testLibraries.jUnitExt
+    testImplementation testLibraries.jUnitExt
+    testImplementation testLibraries.roboelectric
     androidTestImplementation testLibraries.esspresso
 }
