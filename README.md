@@ -4,7 +4,7 @@ Simple app for showing Movie List
 from [The Movie DB](https://developers.themoviedb.org/4/list/get-list)
 
 <p align="center">
- <img src="/screenshot/ss-movie-list.png"/>
+ <img src="/screenshot/ss-movie-list.png" width="200"/>
 </p>
 
 # Tech Stack
