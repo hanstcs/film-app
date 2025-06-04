@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = Constant.MOVIES_TABLE_NAME)
-class MovieModel(
+data class MovieModel(
     @PrimaryKey val id: Int,
     @ColumnInfo(name = "title") val title: String? = "",
     @ColumnInfo(name = "poster_path") val posterPath: String,
