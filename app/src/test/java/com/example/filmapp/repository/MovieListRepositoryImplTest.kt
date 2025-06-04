@@ -21,6 +21,7 @@ import org.junit.Test
 import org.junit.rules.TestRule
 import org.junit.runner.RunWith
 import org.mockito.MockitoAnnotations
+import org.junit.Assert.assertTrue
 
 @RunWith(AndroidJUnit4::class)
 class MovieListRepositoryImplTest {
@@ -60,8 +61,9 @@ class MovieListRepositoryImplTest {
     @Test
     fun `when service is failed, should return data from local db`() {
         val previousMovies = mutableListOf<MovieModel>().apply {
-            MovieModel(3, "Previous", "asd", "Gan", 5.5, 1)
+            add(MovieModel(3, "Previous", "asd", "Gan", 5.5, 1))
         }
+        assertTrue(previousMovies.isNotEmpty())
         db.movieDAO().insertAll(previousMovies)
 
         whenever(remoteDataSource.getListSingle())
