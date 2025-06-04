@@ -15,7 +15,7 @@ from [The Movie DB](https://developers.themoviedb.org/4/list/get-list)
 * Volley
 * Room
 * Glide
-* Mockito and jUnit for unit testing
+* Mockito and JUnit for unit testing.
 * Lottie
 
 # Build Instruction
