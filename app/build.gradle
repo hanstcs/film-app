@@ -68,5 +68,5 @@ dependencies {
     testImplementation testLibraries.mockitoInline
     testImplementation testLibraries.jUnitExt
     testImplementation testLibraries.roboelectric
-    androidTestImplementation testLibraries.esspresso
+    androidTestImplementation testLibraries.espresso
 }
